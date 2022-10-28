@@ -1,0 +1,329 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <title>Cygo</title>
+    
+    <style>
+      body { font-family: 'Roboto', sans-serif; 
+      background-color:#222222; 
+      margin:0; 
+    }
+      .form { 
+        background: #000; 
+        padding-top: 0px; 
+        padding-bottom: 0px; 
+        position: fixed;  
+        bottom: 0; 
+        width: 100%; 
+      }
+      
+      .form input { 
+        background-color: #303030;
+        display:block;
+        margin-top:1rem;
+        border-radius:2rem;
+        border: 0; 
+        padding:10px; 
+        width: 90%;
+        margin-right: 5%;
+        margin-left: 5%;
+      }
+
+      .form input:focus {  background-color:#303030;}
+      .form button {   margin-left: 45%; margin-top:1rem; margin-bottom:0.5rem; display:block; width: 4rem; background: #86F68C; border: none; padding: 10px; }
+      #messages { display:block; list-style-type: none; margin: 0; padding: 0; color:whitesmoke; }
+      #messages li { padding: 5px 10px; display: block;}
+      #messages li:nth-child(odd) {display:block; }
+      #divtest {
+        overflow: scroll;
+        margin-bottom:200px;
+        background-color: #303030;
+        padding: 50px;
+        margin-top:10%;
+        border-radius: 1rem;
+        width: 800px;
+        height: 300px;
+      }
+      .nameinput { margin-left:30%;}
+      .nameask {color: #86F68C; text-align: center;  font-size:2rem;}
+      .namediv{padding:1rem; background-color:#000000; margin-left:28rem; margin-right:28rem; border-radius: 2rem; margin-bottom:2rem;}
+      .button2 {margin-left:10rem; background-color: aqua;}
+      .input2 {margin-left:7.5rem;}
+      .namedesc {color: #86F68C; text-align: center; font-size: 1rem;}
+      
+
+      /* width */
+::-webkit-scrollbar {
+  width: 10px;
+  padding:10px;
+  overflow-y: hidden;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #575757; 
+  border-radius: 10px;
+}
+
+form {
+	margin: 0 auto;
+  width: 400px;
+  padding-top:3rem;
+  padding-bottom: 6rem;
+  margin-top:15rem;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+  margin: 0;
+    
+}
+
+form li + li {
+  margin-top: 1em; 
+}
+
+label {
+	display: inline-block;
+	width: 90px;
+  text-align: right;
+  color:#86F68C;
+}
+
+input,
+textarea {
+	width: 300px;
+  box-sizing: border-box;
+  background-color:#222222;
+  border: 1px solid #222222;
+  color:whitesmoke;
+  opacity: 0.7;
+}
+
+input:focus,
+textarea:focus {
+  background-color:#222222;
+}
+
+textarea {
+	vertical-align: top;
+  height: 5em;
+  background-color:#222222;
+}
+
+.button {
+  padding-left: 90px;
+}
+
+.useru{
+  width:380px;
+  height: 3px;
+  background-color:#c4f6ef;
+  opacity: 0.5;
+  margin-left:1rem;
+}
+
+.user{
+  font-size:140%;
+  margin-left:1rem;
+}
+
+.user:focus{
+  opacity: 1;
+  color:whitesmoke;
+  transition: 0.25s;
+  outline: none;
+}
+
+.passu{
+  width:380px;
+  height: 3px;
+  background-color:#c4f6ef;
+  opacity: 0.5;
+  margin-left:1rem;
+}
+
+.pass{
+  font-size:140%;
+  margin-left:1rem;
+  opacity: 1;
+  color:whitesmoke;
+  transition: 0.25s;
+  outline: none;
+}
+
+.buttontext{
+  padding-left:4rem;
+  padding-right:4rem;
+  margin-left: 6rem;
+  background-color:#222222;
+  border: 2px solid #c4f6ef;
+  color:#c4f6ef;
+  font-size: 130%;
+  border-radius:0.3rem;
+}
+
+.buttontext:hover{
+  color:#222222;
+  background-color:#c4f6ef;
+  transition: all .5s;
+  cursor: pointer;
+}
+
+.guestbutton{
+  padding-left:4rem;
+  padding-right:4rem;
+  margin-left: 6.3rem;
+  background-color:#222222;
+  border: 2px solid #c4f6ef;
+  color:#c4f6ef;
+  font-size: 130%;
+  border-radius:0.3rem;
+}
+
+.guestbutton:hover{
+  color:#222222;
+  background-color:#c4f6ef;
+  transition: all .5s;
+  cursor: pointer;
+}
+
+.login-box{
+  color:whitesmoke;
+  text-align:center;
+  font-size:150%;
+}
+
+.overlaylogin{
+  z-index: 2;
+}
+
+.chatterbox{
+  padding:10px;
+}
+
+.cygo{
+  display: grid;
+  grid-template-columns:20% 60% 20%;
+}
+    </style>
+  </head>
+
+<script src="https://kit.fontawesome.com/7512723844.js" crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<body id = 'body'>
+<div id = "overlaylogin" class = "overlaylogin">
+<form id = "formtest" method="get">
+  <div class="login-box">
+      <h1>Login</h1>
+      </div>
+  <ul>
+      <li>
+          <input type="text" id="user" name="user_name" placeholder = "Username" class = "user"/>
+          <div class = "useru"></div>
+      </li>
+      <li>
+          <input type="password" id="pass" name="pass" placeholder = "Password" class = "pass" />
+          <div class = "passu"></div>
+      </li>
+
+      <li id = "sign" class="loginbutton">
+          <button type="submit" class = "buttontext" class = "loginbutton" id = "sign" onclick = "signIn()">Sign In</button>
+      </li>
+
+      <li id = "guest" class ="guest">
+        <button type = "submit" class ="guestbutton" id = "guestbutton" onclick ="guestSignIn()">Guest</button>
+      </li>
+  </ul>
+</form>
+</div>
+
+<div id = "cygo" class = "cygo">
+    <img src="chatterbox.jpg" alt = "chatterbox.jpg" class = "chatterbox" height="75px" width="75px">
+    <div id = 'divtest'><ul id="messages" class = "scrolldown"></ul></div>
+    <div class = "customize" id = "cusomtize">
+      <h1>Text Color</h1>
+  </div>
+
+    <form id = 'form' class = "form" action="" style="max-width:100%; margin:0px;">
+      <input id="m" autocomplete="off" />
+      <br>
+    </form>
+  </div>
+</div>
+  </body> 
+  <script>
+
+document.getElementById("cygo").style.display = "none";
+document.getElementById("overlaylogin").style.display = "block";
+
+
+//All the logins
+
+function guestSignIn(){
+    document.getElementById("user").value = "Guest" + Math.floor(Math.random() * 1000);;
+    document.getElementById("cygo").style.display = "grid";
+    document.getElementById("overlaylogin").style.display = "none";
+    
+}
+function signIn(){
+  var pass = document.getElementById("pass").value;
+  var name = document.getElementById("user").value;
+
+  if (name == "otis" && pass == "*"){
+    document.getElementById("cygo").style.display = "grid";
+    document.getElementById("overlaylogin").style.display = "none";
+  }  
+
+  else if (name == "super" && pass == "*"){
+    document.getElementById("cygo").style.display = "grid";
+    document.getElementById("overlaylogin").style.display = "none";
+    //Cygo+ Elements
+    document.getElementById("body").style.backgroundColor = "#fcfc68";
+    document.getElementById('form').style.backgroundColor = "#fc68e4";
+    document.getElementById('divtest').style.backgroundColor = "#fc68e4";
+    document.getElementById('messages').style.color = "#ebe134";
+  }
+  
+  else{
+    location.reload();
+  }
+ }
+
+ $(function () {
+    var socket = io();
+    socket.emit('chat message', "Welcome to Chatterbox!" +$('#m').val());
+    $('form').submit(function(e){
+      var name = document.getElementById("user").value;
+      e.preventDefault(); // prevents page reloading
+      socket.emit('chat message', name + ": " +$('#m').val());
+      $('#m').val('');
+      return false;
+});
+
+    socket.on('chat message', function(msg){
+      $('#messages').append($('<li id = "newMessage">').text(msg));
+    });
+    
+    var name = document.getElementById("user").value;
+  
+    
+  });
+
+</script>
+</html>
