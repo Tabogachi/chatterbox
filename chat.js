@@ -4,15 +4,15 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + 'chatterbox/index.html');
 });
 
 app.get('/login', (req, res) => {
-  res.sendFile(__dirname + '/login.html');
+  res.sendFile(__dirname + '/chatterbox/login.html');
 });
 
 app.get('/chat1', (req, res) => {
-  res.sendFile(__dirname + '/chat1.html');
+  res.sendFile(__dirname + 'chatterbox/chat1.html');
 });
 
 app.get('/style.css', (req, res) => {
