@@ -14,7 +14,7 @@
         background: #000; 
         padding-top: 0px; 
         padding-bottom: 0px; 
-        position: fixed;  
+        position: fixed; 
         bottom: 0; 
         width: 100%; 
       }
@@ -218,6 +218,57 @@ textarea {
   display: grid;
   grid-template-columns:20% 60% 20%;
 }
+
+.customize{
+  justify-content: center;
+  align-items: center;
+  margin-left:50%;
+  margin-top:50%;
+}
+
+.customRed{
+  background-color: #ed5757;
+  width:50px;
+  height:50px;
+  
+}
+
+.customOrange{
+  background-color: #ed9857;
+  width:50px;
+  height:50px;
+}
+
+.customYellow{
+  background-color: #edd957;
+  width:50px;
+  height:50px;
+}
+
+.customGreen{
+  background-color: #86ed57;
+  width:50px;
+  height:50px;
+}
+
+.customBlue{
+  background-color: #57aced;
+  width:50px;
+  height:50px;
+}
+
+.customPurple{
+  background-color: #9557ed;
+  width:50px;
+  height:50px;
+}
+
+.customBlack{
+  background-color: #222222;
+  width:50px;
+  height:50px;
+}
+
     </style>
   </head>
 
@@ -255,9 +306,32 @@ textarea {
 
 <div id = "cygo" class = "cygo">
     <img src="chatterbox.jpg" alt = "chatterbox.jpg" class = "chatterbox" height="75px" width="75px">
-    <div id = 'divtest'><ul id="messages" class = "scrolldown"></ul></div>
-    <div class = "customize" id = "cusomtize">
-      <h1>Text Color</h1>
+    <div id = 'divtest'><ul id="messages" class = "scrolldown"></ul>
+    </div>
+
+    <div class = "customize" id = "customize">
+
+      <div class = "customRed" onclick="backRed()">
+
+      </div>
+      <div class = "customOrange" onclick="backOrange()">
+        
+      </div>
+      <div class = "customYellow" onclick="backYellow()">
+        
+      </div>
+      <div class = "customGreen" onclick="backGreen()">
+        
+      </div>
+      <div class = "customBlue" onclick="backBlue()">
+        
+      </div>
+      <div class = "customPurple" onclick="backPurple()">
+        
+      </div>
+      <div class = "customBlack" onclick="backBlack()">
+        
+      </div>
   </div>
 
     <form id = 'form' class = "form" action="" style="max-width:100%; margin:0px;">
@@ -304,6 +378,38 @@ function signIn(){
     location.reload();
   }
  }
+
+
+ //Background color functions
+
+ function backRed(){
+  document.getElementById("body").style.backgroundColor = "#ed5757";
+ }
+
+ function backOrange(){
+  document.getElementById("body").style.backgroundColor = "#ed9857";
+ }
+
+ function backYellow(){
+  document.getElementById("body").style.backgroundColor = "#edd957";
+ }
+
+ function backGreen(){
+  document.getElementById("body").style.backgroundColor = "#86ed57";
+ }
+
+ function backBlue(){
+  document.getElementById("body").style.backgroundColor = "#57aced";
+ }
+
+ function backPurple(){
+  document.getElementById("body").style.backgroundColor = "#9557ed";
+ }
+
+ function backBlack(){
+  document.getElementById("body").style.backgroundColor = "#222222";
+ }
+ 
 
  $(function () {
     var socket = io();
